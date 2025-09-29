@@ -1,16 +1,49 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServerTime from "../components/ServerTime.astro";
+import ServerTimeFB from "../components/ServerTimeFB.astro";
+const pageTitle = import.meta.env.TITLE;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+
+    <section>
+        <h1 class="text-lg">HTMX + {import.meta.env.TITLE}</h1>
+
+        <button class="primary" hx-get="/api/set-cookie" hx-target="#response" hx-swap="innerHTML">
+            Set Cookie
+        </button>
+
+        <button class="primary" hx-get="/api/check-cookie" hx-target="#response" hx-swap="innerHTML">
+            Check Cookie
+        </button>
+
+        <button class="primary" hx-get="/api/delete-cookie" hx-target="#response" hx-swap="innerHTML">
+            Delete Cookie
+        </button>
+
+        <button class="primary" hx-get="/api/show-key" hx-target="#response" hx-swap="innerHTML">
+            Show Key
+        </button>
+
+        <div id="response" class="p-4 border">
+            <p>Cookie :</p>
+        </div>
+    </section>
+
+    <ServerTime server:defer>
+        <ServerTimeFB slot="fallback"/>
+    </ServerTime>
+
+</BaseLayout>
+
+<style>
+
+    @reference "tailwindcss";
+
+    .primary {
+        @apply bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700;
+
+    }
+
+</style>
