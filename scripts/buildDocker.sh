@@ -1,3 +1,3 @@
 #!/usr/bin/env zsh
 
-docker build -t minimum-web:latest .
+docker build --no-cache -t minimum-web:latest .

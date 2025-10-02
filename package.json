@@ -6,16 +6,22 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "postinstall": "sh ./scripts/postInstall.sh"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/node": "^9.4.4",
+    "@astrojs/preact": "^4.1.1",
+    "@raruto/leaflet-elevation": "^2.5.1",
     "@tailwindcss/vite": "^4.1.13",
     "astro": "^5.14.1",
     "htmx.org": "^2.0.7",
+    "leaflet": "^1.9.4",
+    "leaflet-gpx": "^2.2.0",
     "pino": "^9.12.0",
     "pino-pretty": "^13.1.1",
+    "preact": "^10.27.2",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2"
   }

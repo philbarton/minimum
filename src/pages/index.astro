@@ -2,13 +2,17 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ServerTime from "../components/ServerTime.astro";
 import ServerTimeFB from "../components/ServerTimeFB.astro";
-const pageTitle = import.meta.env.TITLE;
+import RandomNumber from '../components/RandomNumber.jsx';
+import Clock from '../components/Clock.jsx';
+import LeafletMap from "../components/LeafletMap";
+const pageTitle = import.meta.env.PUBLIC_TITLE;
+const gpxFile = '/tracks/5_6_of_settle_loop_twice.gpx';
 ---
 
 <BaseLayout pageTitle={pageTitle}>
 
     <section>
-        <h1 class="text-lg">HTMX + {import.meta.env.TITLE}</h1>
+        <h1 class="text-lg">HTMX + {import.meta.env.PUBLIC_TITLE}</h1>
 
         <button class="primary" hx-get="/api/set-cookie" hx-target="#response" hx-swap="innerHTML">
             Set Cookie
@@ -26,14 +30,31 @@ const pageTitle = import.meta.env.TITLE;
             Show Key
         </button>
 
+        <div
+                hx-get="/api/random"
+                hx-trigger="load"
+                hx-target="#result"
+                hx-swap="innerHTML">
+        </div>
+
+        <div id="result">Loading…</div>
+
         <div id="response" class="p-4 border">
             <p>Cookie :</p>
         </div>
     </section>
 
+    <Clock client:load/>
+
     <ServerTime server:defer>
         <ServerTimeFB slot="fallback"/>
     </ServerTime>
+
+    <RandomNumber client:idle/>
+
+    <div style="height:100vh;">
+        <LeafletMap gpxFile={gpxFile} client:only/>
+    </div>
 
 </BaseLayout>
 

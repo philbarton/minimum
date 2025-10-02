@@ -4,6 +4,8 @@ import node from '@astrojs/node';
 
 import tailwindcss from '@tailwindcss/vite';
 
+import preact from '@astrojs/preact';
+
 export default defineConfig({
   adapter: node({
     mode: 'standalone'
@@ -11,5 +13,7 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+
+  integrations: [preact()]
 });

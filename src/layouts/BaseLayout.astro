@@ -1,19 +1,23 @@
 ---
 import '../styles/global.css'
-const { pageTitle } = Astro.props;
+const {pageTitle} = Astro.props;
 ---
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="generator" content={Astro.generator}/>
     <meta name="description" content="Astro tutorial">
     <script src="https://unpkg.com/htmx.org@1.9.3"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OrdnanceSurvey/os-api-branding@latest/os-api-branding.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/OrdnanceSurvey/os-api-branding@latest/os-api-branding.js" data-div="map" defer />
+
     <title>{pageTitle}</title>
 </head>
 <body>
 <h1>{pageTitle}</h1>
-<slot />
+<slot/>
 </body>
 </html>

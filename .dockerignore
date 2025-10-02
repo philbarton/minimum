@@ -14,7 +14,6 @@ pnpm-debug.log*
 # Environment files (keep example templates)
 .env
 .env.*
-!.env.production
 
 # Build outputs and caches
 /dist
@@ -48,4 +47,8 @@ tmp
 # Docker
 Dockerfile
 .dockerignore
+
+/public/leaflet-elevation/
+/scripts/runDocker.sh
+/public/images/
 
