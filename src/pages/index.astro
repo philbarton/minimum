@@ -5,6 +5,7 @@ import ServerTimeFB from "../components/ServerTimeFB.astro";
 import RandomNumber from '../components/RandomNumber.jsx';
 import Clock from '../components/Clock.jsx';
 import LeafletMap from "../components/LeafletMap";
+import BuildTime from "../components/BuildTime.astro";
 const pageTitle = import.meta.env.PUBLIC_TITLE;
 const gpxFile = '/tracks/5_6_of_settle_loop_twice.gpx';
 ---
@@ -55,6 +56,8 @@ const gpxFile = '/tracks/5_6_of_settle_loop_twice.gpx';
     <div style="height:100vh;">
         <LeafletMap gpxFile={gpxFile} client:only="react"/>
     </div>
+
+    <BuildTime client:load/>
 
 </BaseLayout>
 

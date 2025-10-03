@@ -75,7 +75,7 @@ export default function LeafletMap({gpxFile}) {
     return (
         <div className="flex flex-col justify-center align-middle h-screen">
             <div id="map" className="flex-[2] w-4/5 min-h-0" />
-            <div id="elevation-div" className="flex-[1] w-4/5 min-h-0" />
+            <div id="elevation-div" className="flex-[1] w-4/5 h-70 overflow-clip" />
         </div>
     );
 }
