@@ -17,6 +17,7 @@ export const GET: APIRoute = async ({ params }) => {
 
     const apiKey = process.env.OS_API_KEY;
     apiKey || logger.error("No API key found");
+
     const url = `${TILE_URL_PREFIX}/${z}/${x}/${y}.png?key=${apiKey}`;
     const response = await fetch(url);
     const buffer = await response.arrayBuffer();
