@@ -6,10 +6,10 @@ import tailwindcss from '@tailwindcss/vite';
 
 import preact from '@astrojs/preact';
 
-import cloudflare from '@astrojs/cloudflare';
-
 export default defineConfig({
-  adapter: cloudflare(),
+  adapter: node({
+    mode: 'standalone'
+  }),
 
   vite: {
     plugins: [tailwindcss()]

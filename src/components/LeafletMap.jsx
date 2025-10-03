@@ -30,7 +30,8 @@ export default function LeafletMap({gpxFile}) {
                 ],
                 attributionControl: false,
                 rotate: true,
-                preferCanvas: false
+                preferCanvas: false,
+                debug: false,
             };
 
             const map = L.map("map", mapOptions).setView([45, 10], 8);
@@ -39,7 +40,10 @@ export default function LeafletMap({gpxFile}) {
             // Add OS raster tile layer
             L.tileLayer(`api/os-tiles/{z}/{x}/{y}.png`, {
                 maxZoom: 19,
-                attribution: 'Contains OS data © Crown copyright and database rights 2025'
+                attribution: 'Contains OS data © Crown copyright and database rights 2025',
+                updateWhenIdle: true,  // reduces unnecessary requests
+                reuseTiles: true,
+                debug: false,
             }).addTo(map);
 
             L.marker([54.425, -2.968], {
@@ -58,6 +62,7 @@ export default function LeafletMap({gpxFile}) {
                 markers: false,
                 detached: true,
                 elevationDiv: "#elevation-div",
+                debug: false,
                 srcFolder: `${window.location.origin}/leaflet-elevation/src/`
             }).addTo(map);
 
